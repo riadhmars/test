@@ -1,0 +1,25 @@
+	                              	Explication de test 
+
+
+
+1-  je commence par la mise en place de ubuntu à travers vmware.
+2- je fais la mise à jour et installer ansible et python
+3- je prepare l'inventory "hosts" ,ce fichier contient 3 groupes:
+- Pour l’hôte local, soit la machine qui exécute Ansible, il n’est donc
+pas nécessaire de créer un inventaire. Autrement dit on peut exécuter des
+tâches sur localhost sans qu’il soit défini dans l’inventaire. Ceci dit, 
+la variable ansible_connection valorisée avec local est conseillée pour une 
+communication interne directe
+- le nom du conteneur "smartcont" avec Docker comme type de connexion
+4- => execute le playbook pour creer et start le tomcat
+5- pour le Dockerfile : 
+- ansible nécessite l'installation de python donc je lance la mise à jour apt puis apt install pour l'installer
+- le référentiel de déploiement sera monté, donc je crée /data repo et copie le référentiel de déploiement à l'intérieur
+- construire et mettre un tag de l'image
+- exécuter une instance de l'image créée
+
+==> avec la configuration sur l'inventory ansible, nous sommes en mesure de tester la configuration ansible
+à l'intérieur du conteneur que nous venons de créer
+
+6- on utilise la commande exec -it pour s'exécuter des scripts  à l'intérieur du conteneur.
+Bien sûr, cela ne fonctionne que sur un conteneur en cours d'exécution.
